@@ -115,11 +115,11 @@ app.post('/cadastrar', async (req,res)=>{
     transportadorDeEmails.sendMail(emailASerEnviado, (error, info) => {
         if (error) {
             console.log('erro na hora de enviar e-mail', error)
-            respostaASerEnviadaAoFrontend.send({errorMsg: error})
+            res.send({errorMsg: error})
             return
         }
         console.log('email enviado com sucesso! ' + info.response)
-        respostaASerEnviadaAoFrontend.send('SUCESSO AO ENVIAR E-MAIL')
+        res.send('SUCESSO AO ENVIAR E-MAIL')
     })
 
     await res.status(200).json({message: "Usuário criado com sucesso"})
